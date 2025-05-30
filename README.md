@@ -1,0 +1,4 @@
+-> Add Favicons
+-> Dropdown Menu
+-> Import audio files
+-> Hyperlink for socials
