@@ -5,8 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon"  type="image/jpeg" href="assets/favicon.jpg">
     <link rel = "stylesheet" href = "style.css">
-    <title>Velora Enterprise</title>
+    <title>Velora Enterprise</title> 
+    <script>
+let entries = JSON.parse(localStorage.getItem('leaderboard')) || [];
+/*localStorage.removeItem('leaderboard');*/
+function addEntry() {
+  const name = document.getElementById('name').value.trim();
+  const score = parseInt(document.getElementById('score').value, 10);
+  if (name && !isNaN(score)) {
+    entries.push({ name, score });
+    entries.sort((a, b) => b.score - a.score);
+    localStorage.setItem('leaderboard', JSON.stringify(entries));
+    renderBoard();
+    document.getElementById('name').value = '';
+    document.getElementById('score').value = '';
+  }
+}
+
+function renderBoard() {
+  const board = document.getElementById('board').getElementsByTagName('tbody')[0];
+  board.innerHTML = '';
+  entries.forEach(entry => {
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    const scoreCell = document.createElement('td');
+    nameCell.textContent = entry.name;
+    scoreCell.textContent = entry.score;
+    row.appendChild(nameCell);
+    row.appendChild(scoreCell);
+    board.appendChild(row);
+  });
+}
+// Render leaderboard on page load
+renderBoard();
+</script>
 </head>
+<script>
+const questions = [
+  "What is the geographical location of the animal?",
+  "What is the extinction status of the animal?",
+  "Which biome does the animal live in?",
+  "What is the main cause of extinction for this animal?",
+  "Describe a unique feature of the animal.",
+  "How can we help protect this animal?"
+];
+
+function showQuestion(panelNumber) {
+  const randomIndex = Math.floor(Math.random() * questions.length);
+  document.getElementById('question-display').textContent =
+    `Panel ${panelNumber}: ${questions[randomIndex]}`;
+}
+</script>
 <body>
     <main>
         <div class = "navbar">
@@ -21,12 +70,35 @@
         <div class="boxes">
             <div class="leaderboard">
                 <h2>Leaderboard</h2>
+                <input type="text" id="name" placeholder="Name">
+                <input type="number" id="score" placeholder="Score">
+                <button onclick="addEntry()">Add my score</button>
+                <table id="board">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Entries here! -->
+                    </tbody>
+            </table>
             </div>
             <div class="manual">
                 <h2>This is the manual</h2>
             </div>
             <div class="card-info">
                 <h2>This is the card info</h2>
+                <div class="card-panels">
+                    <button onclick="showQuestion(1)">1</button>
+                    <button onclick="showQuestion(2)">2</button>
+                    <button onclick="showQuestion(3)">3</button>
+                    <button onclick="showQuestion(4)">4</button>
+                    <button onclick="showQuestion(5)">5</button>
+                    <button onclick="showQuestion(6)">6</button>
+                </div>
+                <div id="question-display" style="margin-top:20px; font-weight:bold;"></div>
             </div>
         </div>
     </main>
