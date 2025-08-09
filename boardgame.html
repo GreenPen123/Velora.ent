@@ -42,18 +42,289 @@ renderBoard();
 </head>
 <script>
 const questions = [
-  "What is the geographical location of the animal?",
-  "What is the extinction status of the animal?",
-  "Which biome does the animal live in?",
-  "What is the main cause of extinction for this animal?",
-  "Describe a unique feature of the animal.",
-  "How can we help protect this animal?"
+    [ //Panel 1: Type of animals
+    {
+      q: "Which of the following animals is considered critically endangered?",
+      choices: ["A. African Elephant", "B. Snow Leopard", "C. Amur Leopard", "D. Giraffe"],
+      a: "C. Amur Leopard"
+    },
+    {
+      q: "What is the primary reason for the decline in orangutan populations?",
+      choices: ["A. Illegal pet trade", "B. Habitat destruction due to palm oil plantations", "C. Climate change", "D. Invasive species"],
+      a: "B. Habitat destruction due to palm oil plantations"
+    },
+    {
+      q: "Which species is not classified as endangered?",
+      choices: ["A. Bengal Tiger", "B. Blue Whale", "C. Bald Eagle", "D. Javan Rhino"],
+      a: "C. Bald Eagle"
+    },
+    {
+      q: "Which of the following species is functionally extinct in the wild?",
+      choices: ["A. Green Sea Turtle", "B. Northen White Rhino", "C. Komodo Dragon", "D. Polar Bear"],
+      a: "C. Bald Eagle"
+    },
+    {
+      q: "Which of the following species is functionally extinct in the wild?",
+      choices: ["A. Green Sea Turtle", "B. Northen White Rhino", "C. Komodo Dragon", "D. Polar Bear"],
+      a: "C. Bald Eagle"
+    }
+
+  ],
+  [ //Panel 2: Habitat Loss and Human Impact
+    {
+      q: "What is habitat fragmentation?",
+      choices: ["A. When species leave their habitat", "B. Breaking up continuous habitat into smaller patches", "C. Conversion of forests to oceans", "D. Melting of polar ice"],
+      a: "B. Breaking up continuous habitat into smaller patches",
+    },
+    {
+      q: "Which type of farming is a major cause of rainforest destruction?",
+      choices: ["A. Hydroponics", "B. Organic farming", "C. Slash-and-burn agriculture", "D. Urban gardening"],
+      a: "C. Slash-and-burn agriculture"
+    },
+    {
+      q: "How does climate change affect polar bears?",
+      choices: ["A. Makes them overheat", "B. Reduces their ice habitat and hunting grounds", "C. Increases competition with penguins", "D. Causes fur discoloration"],
+      a: "B. Reduces their ice habitat and hunting grounds"
+    },
+    {
+      q: "What human activity is the leading cause of habitat loss?",
+      choices: ["A. Fishing", "B. Deforestation", "C. Ecotourism", "D. Recycling"],
+      a: "B. Deforestation"
+    },
+    {
+      q: "Which type of pollution most directly affects marine life?",
+      choices: ["A. Plastic pollution", "B.  Light pollution", "C. Noise pollution", "D. Air pollution"],
+      a: "A. Plastic pollution"
+    }
+  ],
+  [ //Panel 3: Conservation Efforts
+    {
+      q: "What is the main goal of the IUCN Red List?",
+      choices: ["A. Increase animal hunting quotas", "B. To protect and restore biodiversity", "C. Promote zoo breeding programs only", "D. Classify animals based on speed"],
+      a: "B. To protect and restore biodiversity"
+    },
+    {
+      q: "Which of the following is a successful conservation strategy?",
+      choices: ["A. Captive breeding programs", "B. Habitat destruction", "C. Illegal wildlife trade", "D. Overfishing"],
+      a: "A. Captive breeding programs"
+    },
+    {
+      q: "Which organization is internationally known for wildlife conservation efforts?",
+      choices: ["A. NASA", "B. WWF (World Wide Fund for Nature)", "C. UNICEF", "D. IMF"],
+      a: "B. WWF (World Wide Fund for Nature)"
+    },
+    {
+      q: "What is the term for protecting natural habitats to preserve species?",
+      choices: ["A. Urbanisation", "B. Industrialisation", "C. Habitat Conservation", "D. Ecotourism"],
+      a: "C. Habitat Conservation"
+    },
+    {
+      q: "Which of the following is not a conservation strategy??",
+      choices: ["A. Wildlife corridors", "B. Breeding programs", "C. Anti-poaching laws", "D. Trophy hunting"],
+      a: "D. Trophy hunting"
+    }
+  ],
+  [ //Panel 4: Wildlife Laws and Protection
+    {
+      q: "Which law helps protect migratory birds?",
+      choices: ["A. Endangered Species Act", "B. Convention on International Trade in Endangered Species (CITES)", "C. Marine Mammal Protection Act", "D. Migratory Bird Treaty Act"],
+      a: "D. Migratory Bird Treaty Act"
+    },
+    {
+      q: "What is the primary goal of anti-poaching laws?",
+      choices: ["A. To train animals for entertainment", "B. To protect illegal wildlife trade", "C. To prevent the illegal killing of wildlife", "D. To encourage hunting as a sport"],
+      a: "C. To prevent the illegal killing of wildlife"
+    },
+    {
+      q: "What penalty can be imposed for illegal poaching in many countries?",
+      choices: ["A. Certificate of bravery", "B. Fine and imprisonment", "C. Scholarship", "D. Government job"],
+      a: "B. Fine and imprisonment"
+    },
+    {
+      q: "Why are marine protected areas important?",
+      choices: ["A. They are tourist spots", "B. They protect ocean habitats and species", "C. They allow fishing without rules", "D. They are cheaper to manage than land parks"],
+      a: "B. They protect ocean habitats and species"
+    },
+    {
+      q: "What does “habitat destruction” mean?",
+      choices: ["A. Protecting forests and rivers", "B. Cleaning animal shelters", "C. Damaging or removing the natural environment where animals live", "D. Building safe zones for wildlife"],
+      a: "C. Damaging or removing the natural environment where animals live"
+    }
+  ],
+  [ //Panel 5: Species specific questions :)
+    {
+      q: "What is the natural habitat of the Giant Panda?",
+      choices: ["A. African grasslands", "B. Arctic tundra", "C. Bamboo forests in China", "D. Rainforests in South America"],
+      a: "C. Bamboo forests in China"
+    },
+    {
+      q: "The Vaquita, one of the world’s most endangered marine mammals, lives in:",
+      choices: ["A. Atlantic Ocean", "B. Gulf of California", "C. Indian Ocean", "D. Coral Sea"],
+      a: "B. Gulf of California"
+    },
+    {
+      q: "Which of the following animals is native to Madagascar and endangered due to habitat destruction?",
+      choices: ["A. A. Koala", "B. Lemur", "C. Orangutan", "D. Red Panda"],
+      a: "B. Lemur"
+    },
+    {
+      q: "The Snow Leopard is native to:",
+      choices: ["A. North Pole", "B. Central and South Asian mountains", "C. South American forests", "D. African deserts"],
+      a: "B. Central and South Asian mountains"
+    },
+    {
+      q: "What is a key reason the Red Panda is endangered?",
+      choices: ["A. Habitat loss due to deforestation", "B. Competition with tigers", "C. Poaching for meat", "D. Droughts in the Sahara"],
+      a: "A. Habitat loss due to deforestation"
+    }
+  ],
+  [ //Panel 6: General Knowledge and Public Awareness :)
+    {
+      q: "What does biodiversity refer to?",
+      choices: ["A. Diversity of buildings in a city", "B. Variety of plant and animal life in a habitat", "C. Amount of pollution in the air", "D. Different types of weather"],
+      a: "B. Variety of plant and animal life in a habitat"
+    },
+    {
+      q: "Which activity promotes conservation?",
+      choices: ["A. Visiting wildlife in their natural habitats responsibly", "B. Buying ivory souvenirs", "C. Feeding wild animals in the forest", "D. Cutting down trees for furniture"],
+      a: "A. Visiting wildlife in their natural habitats responsibly"
+    },
+    {
+      q: "Why are keystone species important in ecosystems?",
+      choices: ["A. They are the most endangered", "B. They pollute the least", "C. Their presence supports the entire ecosystem", "D. They live the longest"],
+      a: "C. Their presence supports the entire ecosystem"
+    },
+    {
+      q: "Which is an example of sustainable behavior that helps conservation?",
+      choices: ["A. Buying exotic pets", "B. Supporting palm oil industries", "C. Avoiding single-use plastics", "D. Driving more often"],
+      a: "C. Avoiding single-use plastics"
+    },
+    {
+      q: "What role do zoos play in conservation?",
+      choices: ["A. They allow animals to live in the wild", "B. They remove animals from nature permanently", "C. They support breeding and education programs", "D. They train animals for entertainment only"],
+      a: "C. They support breeding and education programs"
+    }
+  ],
+  [ //Panel 7: Invasive species and ecosystem destruction
+    {
+      q: "What is an invasive species?",
+      choices: ["A. A species that only lives in deserts", "B. A species that is endangered", "C. A non-native species that harms the environment it invades", "D. A native species that helps ecosystems"],
+      a: "C. A non-native species that harms the environment it invades"
+    },
+    {
+      q: "Which of the following is an example of an invasive species?",
+      choices: ["A. Giant Panda in China", "B. Burmese Python in Florida", "C. Koala in Australia", "D. African Elephant in Africa"],
+      a: "B. Burmese Python in Florida"
+    },
+    {
+      q: "Why are invasive species a threat to native biodiversity?",
+      choices: ["A. They usually help native species grow", "B. They clean the ecosystem", "C. They outcompete native species for food and habitat", "They disappear quickly"],
+      a: "C. They outcompete native species for food and habitat"
+    },
+    {
+      q: "What human activity most often leads to the spread of invasive species?",
+      choices: ["A. Natural migration", "B. Climate change", "C. Composting", "D. Global trade and travel"],
+      a: "D. Global trade and travel"
+    },
+    {
+      q: "What is a common method used to control invasive species?",
+      choices: ["A. Mechanical removal and biological control", "B. Introducing more exotic species", "C. Stopping all tourism", "D. Encouraging their spread"],
+      a: "A. Mechanical removal and biological control"
+    }
+  ],
+  [ //Panel 8: Indigenous Knowledge and Traditional conservation [last one hehe]
+    {
+      q: "How can indigenous communities contribute to conservation?",
+      choices: ["A. By ignoring wildlife laws", "B. By sharing traditional knowledge of sustainable living", "C. By promoting poaching", "D. By replacing forests with farmland"],
+      a: "B. By sharing traditional knowledge of sustainable living"
+    },
+    {
+      q: "The practice of rotating crops and resting land used by indigenous groups is known as:",
+      choices: ["A. Land pollution", "B. Overgrazing", "C. Soil mining", "D. Shifting cultivation"],
+      a: "D. Shifting cultivation"
+    },
+    {
+      q: "Sacred groves protected by indigenous people are important because they:",
+      choices: ["A. Are used for urban development", "B. Are harmful to the ecosystem", "C. Preserve biodiversity and native species", "D. Are cleared for farming"],
+      a: "C. Preserve biodiversity and native species"
+    },
+    {
+      q: "Which region is known for strong indigenous conservation practices?",
+      choices: ["A. Amazon Rainforest", "B. Antarctic Peninsula", "C. Sahara Desert", "D. Industrial parks in Asia"],
+      a: "A. Amazon Rainforest"
+    },
+    {
+      q: "Indigenous conservation values often emphasize:",
+      choices: ["A. Exploitation of resources", "B. Maximum land use", "C. Harmony between humans and nature", "D. Industrial development"],
+      a: "B. By combining scientific research with traditional ecological practices"
+    }
+  ]
 ];
 
+    let currentQuestion = "";
+let currentAnswer = "";
+let pickedChoices = [];
+let answerRevealed = false;
+let lastPicked = null;
+
 function showQuestion(panelNumber) {
+  const questions = panelQuestions[panelNumber - 1];
   const randomIndex = Math.floor(Math.random() * questions.length);
-  document.getElementById('question-display').textContent =
-    `Panel ${panelNumber}: ${questions[randomIndex]}`;
+  const picked = questions[randomIndex];
+  currentQuestion = picked.q;
+  currentAnswer = picked.a;
+  pickedChoices = picked.choices || [];
+  answerRevealed = false;
+  lastPicked = null;
+
+  const display = document.getElementById('question-display');
+  display.style.display = "block";
+
+  let choicesHtml = "";
+  if (pickedChoices.length > 0) {
+    choicesHtml = '<div id="choices" style="margin:10px 0;">';
+    pickedChoices.forEach((choice, idx) => {
+      choicesHtml += `<button onclick="selectChoice('${choice.replace(/'/g,"\\'")}')" style="margin:4px;">${choice}</button>`;
+    });
+    choicesHtml += '</div>';
+  }
+
+  display.innerHTML =
+    `Panel ${panelNumber}: ${picked.q}<br>
+     ${choicesHtml}
+     <span>Click the button to reveal the answer!</span><br>
+     <button onclick="showAnswer()">Show Answer</button>`;
+}
+
+function selectChoice(choice) {
+lastPicked = choice;
+// Remove 'selected-choice' from all choice buttons
+const choiceButtons = document.querySelectorAll('#choices button');
+choiceButtons.forEach(btn => btn.classList.remove('selected-choice'));
+// Add 'selected-choice' to the clicked button
+choiceButtons.forEach(btn => {
+  if (btn.textContent === choice) {
+    btn.classList.add('selected-choice');
+  }
+});
+// Do not show feedback until answer is revealed
+}
+
+
+function showAnswer() {
+  answerRevealed = true;
+  let feedback = "";
+  if (lastPicked !== null && pickedChoices.length > 0) {
+    feedback = (lastPicked === currentAnswer)
+      ? `<span style="color:green;font-weight:bold;">Correct!</span>`
+      : `<span style="color:red;font-weight:bold;">Incorrect. The correct answer is: ${currentAnswer}</span>`;
+  } else {
+    feedback = `<span style="color:#48843b;font-weight:bold;">Answer: ${currentAnswer}</span>`;
+  }
+
+  document.getElementById('question-display').innerHTML =
+     `${feedback}
+     <br><span>Try another panel or question!</span>`;
 }
 </script>
 <body>
@@ -98,7 +369,7 @@ function showQuestion(panelNumber) {
                     <button onclick="showQuestion(5)">5</button>
                     <button onclick="showQuestion(6)">6</button>
                 </div>
-                <div id="question-display" style="margin-top:20px; font-weight:bold;"></div>
+                <div id="question-display" style="margin-top:20px; font-weight:bold; display: none;"></div>
             </div>
         </div>
     </main>
