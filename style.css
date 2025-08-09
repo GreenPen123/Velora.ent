@@ -1,7 +1,9 @@
+/*ctrl + I to open copilot fuiyoh*/
 html{
   background-color: rgb(250, 250, 217);
   font-family: garamond;
 }
+
 
 .navbar {
   background-color:#5a9a4b;
@@ -55,7 +57,7 @@ hr{
   padding: 0;
 }
 
-.boxes div{
+.boxes > div:not(#question-display) {
   display: flex;
   justify-content: center;
   background-color: #e3c99d;
@@ -67,11 +69,45 @@ hr{
 .boxes div h2{
   font-weight: bold; 
   padding-left: 0px;
+  margin: 0;
+  text-decoration: underline;
 }
 
 .leaderboard h4, .manual h4, .card-info h4{
   font-size: 110%;
   margin: 20px;
+}
+
+.card-info, .leaderboard{
+  position: relative;
+  padding: 20px;
+  flex-direction: column;
+  text-align: center;
+}
+
+#name, #score {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.leaderboard button {
+  padding: 10px 20px;
+  background-color: rgb(185, 129, 98);
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.leaderboard button:hover {
+  cursor: pointer;
+}
+
+.leaderboard ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .photo {
@@ -87,6 +123,7 @@ hr{
 
 .photo-text {
   margin: 20px;
+  text-align: center;
 }
 
 .photo img{
@@ -145,6 +182,8 @@ img {
   justify-content: center;
   align-items: center;
   gap: 20px; /* space between links */
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 #link-taker a {
@@ -158,9 +197,114 @@ img {
   color: inherit;
   display: flex;
   align-items: center;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
 }
 
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #e3c99d;
+  border: 2px solid black;
+}
+
+.leaderboard thead tr {
+  border-bottom: 2px solid #000000;
+}
+
+.card-panels {
+  background: none !important;
+  border: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.card-panels button {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5em;
+  border-radius: 10px;
+  border: 2px solid black;
+  background: #f7e3c6;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 10px;
+  
+}
+
+.card-panels button:hover {
+  background: rgb(185, 129, 98);
+}
+
+.selected-choice {
+  background: #b98162 !important;
+  color: #fff !important;
+}
+
+#choices button {
+  background: #f7e3c6;  
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 8px 18px;
+  margin: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+#choices button:hover {
+  background: rgb(185, 129, 98);
+  color: #222;
+}
+
+#question-display {
+  background-color: #f5cd92 !important;  
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+#choices {
+  background-color:#f5cd92 !important;
+  border: none !important;
+  border-radius: 10px;
+  padding: 8px 0;
+}
+
+#question-display button {
+  background: #f7e3c6;  
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 8px 18px;
+  margin: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s; 
+}
+
+#question-display button:hover {
+  background: rgb(185, 129, 98);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 @media (max-width: 600px) {
+    #link-taker {
+    gap: 12px;
+    align-items: stretch;
+  }
+  #link-taker a {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1em;
+  }
   .photo {
     flex-direction: column;
     align-items: stretch;
@@ -171,9 +315,24 @@ img {
   .photo-text {
     margin: 10px 0 0 0;
   }
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 700px) {
+  .card-panels {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .card-panels button {
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+    margin: 6px;
+  }
+  
   .timeline {
     padding-left: 0;
     padding-right: 0;
@@ -190,5 +349,14 @@ img {
     background-color: rgb(185, 129, 98);
     text-align: left;
   }
-}
 
+  #question-display button, #choices button {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+    margin: 6px 0;
+    padding: 10px 0;
+    display: block;
+  }
+}
